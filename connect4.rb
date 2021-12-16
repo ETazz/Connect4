@@ -1,4 +1,10 @@
-#!/usr/bin/env ruby
 
-puts "Hello world #{ARGV[0]}. How are you #{ARGV[0]}?"
-puts ARGV.inspect
+
+class Board
+
+    @@board = []
+    @@rows = 6
+    @@collumns = 7 
+
+
+
