@@ -1,1 +1,1 @@
-# Connect4
+# Text based adventure game
