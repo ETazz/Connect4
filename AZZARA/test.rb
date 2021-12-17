@@ -41,3 +41,16 @@ when "no"
     print prompt
 end
 end
+
+#code that could return error
+
+# `if ARGV.length > 0 
+#     flag, *rest = ARGV
+#     ARGV.clear
+#     case flag
+#     when '-settings'
+#         puts ['work in progress. other options', '-play', '-exit'] 
+#     when '-exit'
+#         exit
+#     end
+# end

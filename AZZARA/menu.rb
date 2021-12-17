@@ -15,16 +15,20 @@ puts "
 
 puts ["\n", "Welcome to the adventures of Azzara!!", "\n", "-play", "-settings", "-exit","\n"]
 
-if ARGV.length > 0 
-    flag, *rest = ARGV
-    ARGV.clear
-    case flag
-    when '-settings'
-        puts ['work in progress. other options', '-play', '-exit'] 
-    when '-exit'
-        exit
-    end
-end
+begin 
+    #code that could return error
+
+# `if ARGV.length > 0 
+#     flag, *rest = ARGV
+#     ARGV.clear
+#     case flag
+#     when '-settings'
+#         puts ['work in progress. other options', '-play', '-exit'] 
+#     when '-exit'
+#         exit
+#     end
+# end
+
 
 while user_input = gets.chomp 
     case user_input
@@ -37,4 +41,7 @@ when 'exit'
 end
 end
 
+rescue 
+    puts "error occured"
+end
 
