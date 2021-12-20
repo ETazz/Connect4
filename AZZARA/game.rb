@@ -1,27 +1,50 @@
-#items = []
-#yes = true
-#no = false 
 
-sp = "\n"
-prompt = "> "
+@user = ''
 
-puts "\n" + "what is your name?" + "\n"
+require "tty-prompt"
 
-name = gets 
+prompt = TTY::Prompt.new
 
-puts ["\n" + "You suddenly wake to a familiar face.." + "\n" + "mum: Good Morning there #{name.chomp}! Your father is in the training yards, go meet him!"]
 
-puts ["\n" + "leave house?", "-yes", "-no"]
-print prompt
+def clear 
+    system('clear')
+end
 
-while user_input = gets.chomp 
-    case user_input
+
+begin
+
+
+#code that could error
+clear 
+
+# puts "\n" + "what is your name?" + "\n"
+
+# name = gets 
+
+@user = prompt.ask("what is your name?")
+
+puts ["\n" + "You suddenly wake to a familiar face.." + "\n" + "mum: Good Morning there #{@user.chomp}! Your father is in the training yards, go meet him!"]
+
+# puts ["\n" + "leave house?", "-yes", "-no"]
+
+# prompt.select("leave house?", %w(yes no))
+
+prompt = TTY::Prompt.new
+answer = prompt.yes?("leave house?")
+# answer = true puts("left house..")
+# answer = false puts ("stay in room bored..") 
+
+
+
+
+while prompt = gets.chomp 
+    case prompt
 when "yes"
     puts "\n" + "left house.."
     break
 when "no"
     puts ["\n" + "stay in room bored..", "\n" + "leave house?", "-yes", "-no"] 
-    print prompt
+
 else 
     puts ["\n" + "invalid response", "can only use", "-yes", "-no"]
 end
@@ -30,7 +53,8 @@ end
 puts "\n" + "#{name.chomp}: good morning father"
 
 puts ["\n" + "father: hello there #{name.chomp}, care to join me in some sparing before your big adventure!", "\n", "-yes", "-no"]
-print prompt
+
+
 while user_input = gets.chomp 
     case user_input
 when "yes"
@@ -38,12 +62,13 @@ when "yes"
     break
 when "no"
     puts ["\n" + "father: you better train up for your adventure!", "join me in some sparing before your big adventure", "\n", "-yes", "-no"]
-    print prompt
+
 end
 end
 
-puts ["\n" + "father: Well #{name.chomp}, your time has come, i am proud of you and how far you have come!", "Time for your journey to start", "--Begin?", "-yes", "-no"]
-print prompt 
+puts ["\n" + "father: Well #{name.chomp}, your time has come, i am proud of you and how far you have come!", "Time for your journey to start", + "\n", "Begin?", "-yes", "-no"]
+
+
 while user_input = gets.chomp 
     case user_input
 when "yes"
@@ -54,4 +79,11 @@ when "no"
 else
     puts "invalid return"
 end
+end
+
+# next code here!!!
+
+rescue 
+    StandardError
+    puts "error had occured"
 end

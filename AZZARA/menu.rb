@@ -1,9 +1,9 @@
-#items = []
-#yes = true
-#no = false 
+require "tty-prompt"
+prompt = TTY::Prompt.new 
 
 
-prompt = "> "
+    
+
 
 puts "
 ░█████╗░███████╗███████╗░█████╗░██████╗░░█████╗░
@@ -13,35 +13,26 @@ puts "
 ██║░░██║███████╗███████╗██║░░██║██║░░██║██║░░██║
 ╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝" + "\n"
 
-puts ["\n", "Welcome to the adventures of Azzara!!", "\n", "-play", "-settings", "-exit","\n"]
-
-begin 
-    #code that could return error
-
-# `if ARGV.length > 0 
-#     flag, *rest = ARGV
-#     ARGV.clear
-#     case flag
-#     when '-settings'
-#         puts ['work in progress. other options', '-play', '-exit'] 
-#     when '-exit'
-#         exit
-#     end
-# end
+puts ["\n" + "Welcome to the adventures of Azzara!!" + "\n", "-play", "-settings", "-exit" + "\n"]
 
 
+    begin
+        
 while user_input = gets.chomp 
     case user_input
 when 'play' 
     require_relative 'game.rb'
 when 'settings'
-    puts ['work in progress', "\n", '-play', '-exit'] 
+    puts ['work in progress' + "\n", '-play', '-settings', '-exit',] 
 when 'exit'
     exit
-end
-end
-
-rescue 
-    puts "error occured"
+else
+    puts ["invalid answer" + "\n", "-play", '-settings', "-exit"]
 end
 
+end
+
+rescue
+    standardError
+    puts "error has occured"
+end
