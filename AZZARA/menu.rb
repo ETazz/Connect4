@@ -2,6 +2,8 @@ require "tty-prompt"
 
 prompt = TTY::Prompt.new 
 
+begin
+
 puts "
 ░█████╗░███████╗███████╗░█████╗░██████╗░░█████╗░
 ██╔══██╗╚════██║╚════██║██╔══██╗██╔══██╗██╔══██╗
@@ -10,25 +12,14 @@ puts "
 ██║░░██║███████╗███████╗██║░░██║██║░░██║██║░░██║
 ╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝" + "\n"
 
-puts ["\n" + "Welcome to the adventures of Azzara!!" + "\n", "-play", "-settings", "-exit" + "\n"]
-
-answer = prompt.select
-
-
-    begin
-        
-while user_input = gets.chomp 
-    case user_input
-when 'play' 
+while answer = prompt.select("\n" + "Welcome to the adventures of Azzara!!", ["Play", "Settings", "Exit"])
+if answer == "Play"
     require_relative 'game.rb'
-when 'settings'
-    puts ['work in progress' + "\n", '-play', '-settings', '-exit',] 
-when 'exit'
+elsif answer == "Settings"
+    puts "\n" + "work in progress..."
+elsif answer == 'Exit'
     exit
-else
-    puts ["invalid answer" + "\n", "-play", '-settings', "-exit"]
 end
-
 end
 
 rescue
