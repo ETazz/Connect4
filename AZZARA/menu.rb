@@ -1,9 +1,6 @@
 require "tty-prompt"
+
 prompt = TTY::Prompt.new 
-
-
-    
-
 
 puts "
 ░█████╗░███████╗███████╗░█████╗░██████╗░░█████╗░
@@ -14,6 +11,8 @@ puts "
 ╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝" + "\n"
 
 puts ["\n" + "Welcome to the adventures of Azzara!!" + "\n", "-play", "-settings", "-exit" + "\n"]
+
+answer = prompt.select
 
 
     begin
